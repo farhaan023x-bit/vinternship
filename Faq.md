@@ -220,7 +220,7 @@ Try these troubleshooting steps in order:
 4. **Use a different browser**
 5. **Clear browsing data and cache**, then try to re-login
 
-If the issue persists after trying all steps, **record the issue** and email it to: **internship-support@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
+If the issue persists after trying all steps, **record the issue** and email it to: **vinternship@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
 
 **9.6 I have completed all videos and quizzes in the ViBe course, but my progress is still showing less than 100%. What should I do?**  
 
@@ -286,7 +286,7 @@ If you face this issue, follow the steps below:
 6. Refresh the Cliq page and try joining the channel again.
 
 If the issue persists, take a **screenshot or screen recording** clearly showing the error message, briefly explain the problem, and email it to:  
-**internship-support@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
+**vinternship@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
 
 **10.3 I have joined the Cliq Channel but I am unable to message in it. What should I do?**  
 
@@ -295,7 +295,7 @@ This issue is usually caused by restricted collaboration permissions.
 Follow the steps mentioned in **10.2** to enable **Universal Access**, then refresh the page.
 
 If you are still unable to send messages, take a **screenshot or screen recording** of the issue, briefly explain the problem, and email it to:  
-**internship-support@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
+**vinternship@vicharanashala.zohodesk.in** between **9:00 AM and 9:00 PM**.
 
 **10.4 How do I update my profile picture so everyone can view it?**  
 
