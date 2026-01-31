@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Endorsement Networks</title>
 
+  <!-- Mermaid -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 
   <style>
@@ -47,7 +48,7 @@
       font-size: 15px;
       border-radius: 8px;
       border: 1px solid #d1d5db;
-      min-width: 220px;
+      min-width: 240px;
     }
 
     .mermaid-wrapper {
@@ -67,139 +68,162 @@
 </head>
 
 <body>
-  <div class="container">
-    <h2>🌳 Endorsement Networks</h2>
+<div class="container">
+  <h2>🌳 Endorsement Networks</h2>
 
-    <div class="controls">
-      <select id="typeSelect">
-        <option value="VALID">Jedi Networks</option>
-        <option value="FLOATING">Floating Islands</option>
-        <option value="DEFAULTER">Defaulter Networks</option>
-      </select>
+  <div class="controls">
+    <select id="typeSelect">
+      <option value="VALID">Jedi Networks</option>
+      <option value="FLOATING">Floating Islands</option>
+      <option value="DEFAULTER">Needs Improvement 💙</option>
+    </select>
 
-      <select id="rootSelect">
-        <option value="">Select a root…</option>
-      </select>
-    </div>
+    <select id="rootSelect">
+      <option value="">Select a root…</option>
+    </select>
+  </div>
 
-    <div class="mermaid-wrapper">
-      <div class="mermaid" id="tree">
-        Select a network to view the tree
-      </div>
-    </div>
-
-    <div class="hint">
-      Use browser zoom or horizontal scroll for large networks
+  <div class="mermaid-wrapper">
+    <div class="mermaid" id="tree">
+      Select a network to view
     </div>
   </div>
 
-  <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbzpcyhUQstB2Fvjv4oha_3a6b12-q5pAh2B-DMQrh6nIH7llWIq4pt6hY17zC8vqc5f/exec";
+  <div class="hint">
+    Use browser zoom or horizontal scroll for large networks
+  </div>
+</div>
 
-    let dataByType = {};
-    let currentType = "VALID";
+<script>
+  /* -------------------------------------------------------
+   * CONFIG – ADD YOUR WEB APP URL HERE
+   * ----------------------------------------------------- */
+  const API_URL = "https://script.google.com/macros/s/AKfycbx790OAnanMoi_eNsz-dpCaDq_9G-z3pJOzh-UedO2zqwykfcHGVtasQdqnxuMe_h6EgA/exec";
 
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#ffffff",
-        primaryBorderColor: "#4f46e5",
-        primaryTextColor: "#111827",
-        secondaryColor: "#eef2ff",
-        secondaryBorderColor: "#6366f1",
-        lineColor: "#374151",
-        fontFamily: "Inter, Arial, sans-serif",
-        fontSize: "15px"
-      },
-      flowchart: {
-        curve: "basis",
-        nodeSpacing: 50,
-        rankSpacing: 80
-      }
-    });
+  let dataByType = {};
+  let currentType = "VALID";
 
-    fetch(API_URL)
-      .then(res => res.json())
-      .then(json => {
-        dataByType = json;
-        populateRoots();
-      })
-      .catch(err => {
-        document.getElementById("tree").innerText = "Failed to load data";
-        console.error(err);
-      });
+  /* -------------------------------------------------------
+   * MERMAID INITIALIZATION
+   * ----------------------------------------------------- */
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "base",
+    themeVariables: {
+      primaryColor: "#ffffff",
+      primaryBorderColor: "#4f46e5",
+      primaryTextColor: "#111827",
+      secondaryColor: "#eef2ff",
+      secondaryBorderColor: "#6366f1",
+      lineColor: "#374151",
+      fontFamily: "Inter, Arial, sans-serif",
+      fontSize: "15px"
+    },
+    flowchart: {
+      curve: "basis",
+      nodeSpacing: 50,
+      rankSpacing: 80
+    }
+  });
 
-    document.getElementById("typeSelect").addEventListener("change", e => {
-      currentType = e.target.value;
+  /* -------------------------------------------------------
+   * FETCH DATA FROM APPS SCRIPT
+   * ----------------------------------------------------- */
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(json => {
+      dataByType = json;
       populateRoots();
-      clearTree();
+    })
+    .catch(err => {
+      document.getElementById("tree").innerText = "Failed to load data";
+      console.error(err);
     });
 
-    document.getElementById("rootSelect").addEventListener("change", e => {
-      const root = e.target.value;
-      if (root) renderTree(root);
-      else clearTree();
+  /* -------------------------------------------------------
+   * EVENT LISTENERS
+   * ----------------------------------------------------- */
+  document.getElementById("typeSelect").addEventListener("change", e => {
+    currentType = e.target.value;
+    populateRoots();
+    clearTree();
+  });
+
+  document.getElementById("rootSelect").addEventListener("change", e => {
+    const root = e.target.value;
+    if (root) renderTree(root);
+    else clearTree();
+  });
+
+  /* -------------------------------------------------------
+   * UI HELPERS
+   * ----------------------------------------------------- */
+  function populateRoots() {
+    const rootSelect = document.getElementById("rootSelect");
+    rootSelect.innerHTML = '<option value="">Select a root…</option>';
+
+    const group = dataByType[currentType];
+    if (!group) return;
+
+    Object.keys(group).sort().forEach(label => {
+      const opt = document.createElement("option");
+      opt.value = label;
+      opt.textContent = label;
+      rootSelect.appendChild(opt);
     });
 
-    function populateRoots() {
-      const rootSelect = document.getElementById("rootSelect");
-      rootSelect.innerHTML = `<option value="">Select a root…</option>`;
-
-      const group = dataByType[currentType];
-      if (!group) return;
-
-      Object.keys(group)
-        .sort()
-        .forEach(rootLabel => {
-          const opt = document.createElement("option");
-          opt.value = rootLabel;
-          opt.textContent = rootLabel;
-          rootSelect.appendChild(opt);
-        });
+    // Auto-render for Floating / Defaulter (single group)
+    if (currentType !== "VALID") {
+      const onlyKey = Object.keys(group)[0];
+      rootSelect.value = onlyKey;
+      renderTree(onlyKey);
     }
+  }
 
-    function clearTree() {
-      const el = document.getElementById("tree");
-      el.innerHTML = "Select a network to view the tree";
-    }
+  function clearTree() {
+    document.getElementById("tree").innerHTML = "Select a network to view";
+  }
 
-    function safeId(text) {
-  return text.replace(/[^a-zA-Z0-9_]/g, "_");
-}
+  function safeId(text) {
+    return text.replace(/[^a-zA-Z0-9_]/g, "_");
+  }
+
+  /* -------------------------------------------------------
+   * RENDER MERMAID TREE
+   * ----------------------------------------------------- */
 
 function renderTree(rootLabel) {
-  const nodes = dataByType[currentType][rootLabel].nodes;
+  const group = dataByType[currentType][rootLabel];
 
-  let diagram = "graph TD\n";   
+  const nodes = group.nodes;
+  const edges = group.edges;
 
-  nodes.forEach((n) => {
-    const childId = safeId(n.child_id);
-    const parentId = n.parent_id ? safeId(n.parent_id) : null;
-    const childLabel = n.child_label;
+  let diagram = "graph TD\n";
 
-    diagram += `${childId}["<b>${childLabel}</b>"]\n`;
+  /* ---------- Render nodes (once) ---------- */
+  nodes.forEach(n => {
+    diagram += `${n.id}["${n.label}"]\n`;
+  });
 
-    if (parentId) {
-      diagram += `${parentId} --> ${childId}\n`;
-    }
+  /* ---------- Render edges (once) ---------- */
+  edges.forEach(e => {
+    diagram += `${e.from} --> ${e.to}\n`;
   });
 
   const el = document.getElementById("tree");
   el.innerHTML = "";
 
   const uniqueId = "tree_" + Date.now();
-
   mermaid.render(uniqueId, diagram)
     .then(({ svg }) => {
       el.innerHTML = svg;
     })
     .catch(err => {
       el.innerHTML = "Failed to render tree";
-      console.error(err);
+      console.error(err, diagram);
     });
 }
 
-  </script>
+</script>
 </body>
 </html>

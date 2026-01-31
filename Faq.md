@@ -138,6 +138,9 @@ Refer to the **official NPTEL website**.
 **5.2 Will recommendation letters be provided?**  
 Not guaranteed. Issued **at the instructor’s discretion**.
 
+**5.3 What are the internship report requirements and how will certificates be issued?**  
+Interns are required to submit a 2–3 page journal/report describing their internship experience. After reviewing the submissions and confirming successful completion, the team will share the completion details with NPTEL, following which NPTEL will issue the internship certificates to eligible students.
+
 ---
 
 ## 6. Internship Completion
