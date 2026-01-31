@@ -103,7 +103,7 @@ Mentors and coordinators will engage via **live sessions** and **forums**.
 ## 4. Support and Resolution Protocol
 
 **4.1 Where do I raise my concern initially?**  
-Email **internship-support@vicharanashala.zohodesk.in**.  
+Email **vinternship@vicharanashala.zohodesk.in**.  
 Responses are provided **within 2 hours** between **9:00 AM and 9:00 PM**.
 
 **4.2 What if I don’t receive a response within 24 hours?**  
