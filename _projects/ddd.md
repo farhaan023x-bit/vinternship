@@ -36,7 +36,6 @@ features:
     repo: "vicharanashala/vibe"
     issue: 529
 ---
-
 ## **Project Overview**
 
 DDD is a comprehensive performance and engagement dashboard that provides real-time insights into user activity, progress, and achievements across the entire platform. Rather than being standalone, DDD integrates into all other projects (ViBe, Spandan, Peer Evaluation), providing unified analytics that motivates users through gamification and visual feedback.
@@ -75,3 +74,81 @@ DDD creates a unified dashboard bringing together all user activities across pla
 </details>
 {% endfor %}
 {% endif %}
+---
+
+## **Feature Analysis: Teacher Dashboard (Spandan)**
+
+### 📌 Understanding
+
+The Teacher Dashboard is designed to provide real-time and post-session insights into student performance, engagement, and achievements. It acts as a read-only analytics system for monitoring learning outcomes.
+
+---
+
+### 🧩 Data Requirements
+
+To implement this feature, the following data needs to be tracked:
+
+#### Session Data
+- sessionId
+- sessionStatus (live/completed)
+- totalStudents
+- totalQuestions
+- totalPoints
+
+#### Student Data
+- studentId
+- questionsAttempted
+- correctAnswers
+- incorrectAnswers
+- totalPoints
+- avgResponseTime
+
+#### Question Data
+- questionId
+- responseCount
+- correctPercentage
+- avgAnswerTime
+
+---
+
+### ⚙️ Backend Design (Planned)
+
+#### API Endpoints
+
+**GET /session/:id**
+- Fetch session overview
+
+**GET /students/:sessionId**
+- Fetch student performance data
+
+**GET /questions/:sessionId**
+- Fetch question analytics
+
+---
+
+### 📊 Dashboard Components (Frontend Plan)
+
+- Session Overview Panel
+- Student Performance Table
+- Question Analytics Section
+- Achievements Display
+- Filters & Sorting Controls
+
+---
+
+### 🔄 Current Progress
+
+- Analyzed feature requirements
+- Identified required data structures
+- Designed API endpoints
+- Planning backend implementation
+
+---
+
+### ⏳ Next Steps
+
+- Implement backend routes for session and student data
+- Create mock data for testing
+- Build basic dashboard UI layout
+
+---
