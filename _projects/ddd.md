@@ -152,3 +152,39 @@ To implement this feature, the following data needs to be tracked:
 - Build basic dashboard UI layout
 
 ---
+
+## **Prototype Implementation (Backend)**
+
+A basic backend structure has been initiated to support the Teacher Dashboard analytics.
+
+### 📡 API Prototype
+
+**POST /activity**
+
+Stores user activity data.
+
+Example:
+{
+  "userId": "101",
+  "project": "Spandan",
+  "action": "question_answered",
+  "isCorrect": true,
+  "responseTime": 12
+}
+
+---
+
+### ⚙️ Current Backend Capability
+
+- Accepting activity data via API
+- Logging user actions for analysis
+- Preparing data for aggregation into dashboard metrics
+
+---
+
+## **Future Backend Enhancements**
+
+- Aggregate session-level analytics
+- Compute student performance metrics
+- Generate question-wise insights
+- Optimize for real-time updates
