@@ -225,5 +225,20 @@ Example:
 - Add real-time analytics support
 ---
 
+## Feature: Teacher Dashboard for Student Performance Monitoring
+
+### Backend APIs:
+- GET /student-performance
+- GET /questions/:id
+
+### Frontend:
+- Displays student performance table
+- Displays question analytics
+
+### Status:
+Completed ✅
+
+---
+
 
   
