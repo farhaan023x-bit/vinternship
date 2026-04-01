@@ -205,6 +205,25 @@ Example:
 - Handling real-time updates during live sessions  
 - Designing scalable analytics for large user data  
 - Ensuring consistency between student and teacher dashboards  
-- Optimizing performance for data-heavy queries  
+- Optimizing performance for data-heavy queries
+---
+## 🔄 Current Progress (Updated)
+
+- Backend server setup completed  
+- Activity tracking API implemented  
+- Student performance API implemented  
+- Session overview API implemented  
+- Question analytics API implemented  
+- Tested all APIs using browser and Thunder Client  
+
+---
+## ⏳ Next Steps
+
+- Build frontend dashboard UI using React  
+- Integrate APIs with frontend  
+- Replace mock data with MongoDB  
+- Add real-time analytics support
+---
+
 
   
