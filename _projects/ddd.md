@@ -164,6 +164,8 @@ A basic backend structure has been initiated to support the Teacher Dashboard an
 Stores user activity data.
 
 Example:
+
+```json
 {
   "userId": "101",
   "project": "Spandan",
@@ -171,8 +173,7 @@ Example:
   "isCorrect": true,
   "responseTime": 12
 }
-
----
+```
 
 ### ⚙️ Current Backend Capability
 
@@ -196,4 +197,14 @@ Example:
 - Exploring real-time analytics systems  
 - Understanding dashboard data aggregation  
 - Studying Chart.js for data visualization  
-- Learning API design for scalable systems  
+- Learning API design for scalable systems
+
+---
+## **Challenges & Considerations**
+
+- Handling real-time updates during live sessions  
+- Designing scalable analytics for large user data  
+- Ensuring consistency between student and teacher dashboards  
+- Optimizing performance for data-heavy queries  
+
+  
