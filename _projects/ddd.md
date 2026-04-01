@@ -188,3 +188,12 @@ Example:
 - Compute student performance metrics
 - Generate question-wise insights
 - Optimize for real-time updates
+
+---
+
+## **Learning & Exploration**
+
+- Exploring real-time analytics systems  
+- Understanding dashboard data aggregation  
+- Studying Chart.js for data visualization  
+- Learning API design for scalable systems  
