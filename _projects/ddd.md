@@ -202,8 +202,8 @@ Example:
 ---
 ## ⏳ Next Steps
 
-- - Frontend dashboard UI implemented using React 
-- Integrate APIs with frontend  
+- Frontend dashboard UI implemented using React 
+- APIs integrated with frontend   
 - Replace mock data with MongoDB  
 - Add real-time analytics support
 ---
